@@ -4,6 +4,10 @@ const testUtils = require('../../../common/test-utils/browser');
 const mock = require('../mock');
 const renderer = require('../');
 
+function delay(callback) {
+    setTimeout(callback, 50);
+}
+
 describe('given the menu is in the default state', () => {
     let widget;
     let root;
@@ -191,7 +195,7 @@ describe('given the menu is in the expanded state', () => {
     describe('when \'b\' key is pressed on first item', () => {
         beforeEach((done) => {
             testUtils.triggerEvent(firstItem, 'keypress', 66, 'b');
-            setTimeout(done);
+            delay(done);
         });
 
         test('then first item loses roving tabindex', () => {
